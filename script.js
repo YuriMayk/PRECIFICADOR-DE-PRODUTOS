@@ -36,7 +36,7 @@ function adicionarProduto() {
     // Adicionar botão de criar etiqueta
     var botaoEtiqueta = document.createElement('button');
     botaoEtiqueta.innerHTML = 'Criar Etiqueta';
-    botaoEtiqueta.onclick = function() {
+    botaoEtiqueta.onclick = function () {
         gerarEtiqueta(cellNome.innerHTML, cellFabricante.innerHTML, cellCodigo.innerHTML, cellVarejo.innerHTML, cellAtacado.innerHTML);
     };
 
@@ -64,7 +64,7 @@ function gerarEtiqueta(nome, fabricante, codigo, valorVarejo, valorAtacado) {
 function gerarEtiquetas() {
     var tabela = document.getElementById('tabelaProdutos');
     var linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    
+
     var etiquetaContainer = document.getElementById('etiqueta');
     etiquetaContainer.innerHTML = ''; // Limpar conteúdo anterior
 
@@ -77,15 +77,20 @@ function gerarEtiquetas() {
 
         // Adicionar etiqueta para cada produto
         etiquetaContainer.innerHTML += `
-            <div>
-                <h2>Etiqueta para ${nome}</h2>
-                <p><strong>Nome:</strong> ${nome}</p>
-                <p><strong>Fabricante:</strong> ${fabricante}</p>
-                <p><strong>Código:</strong> ${codigo}</p>
-                <p><strong>Valor Varejo:</strong> ${valorVarejo}</p>
-                <p><strong>Valor Atacado:</strong> ${valorAtacado}</p>
-                <hr>
+            <div id="divEtiqueta">
+                <p id="tituloDaEtiqueta"> ${nome} - ${fabricante} - ${codigo}</p>
+                <div id="divPreços">
+                    <p id="pPreçoVarejo"><strong id="colorBlack">R$:</strong> ${valorVarejo} <span id="centavos">,99</span></p>
+                </div>
+                    <p id="pPreçoAtacado"><strong id="colorBlack">REF:000</strong> ${valorAtacado}</p>
+                
             </div>
         `;
     }
+}
+
+function ocultarParaImprimir() {
+    let infoImprimir = document.getElementById("divOcutavel")
+    console.log(infoImprimir)
+    infoImprimir.style.display= "none"
 }
